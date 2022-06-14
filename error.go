@@ -19,11 +19,11 @@ const (
 
 // ParseError represents an error during the parsing
 type ParseError struct {
-	// Line returns the line of the error
+	// Line contains the line of the error
 	Line int
-	// Code returns the error code of the error
+	// Code contains the error code of the error
 	Code ErrorCode
-	// returns the name of the element generating the error
+	// Reason contains the name of the element generating the error
 	Reason string
 }
 
