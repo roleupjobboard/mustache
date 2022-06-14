@@ -17,8 +17,8 @@ const (
 	ErrUnmatchedCloseTag     ErrorCode = "unmatched_close_tag"
 )
 
-// Error represents an error during the parsing
-type Error struct {
+// ParseError represents an error during the parsing
+type ParseError struct {
 	// Line returns the line of the error
 	Line int
 	// Code returns the error code of the error
@@ -27,11 +27,11 @@ type Error struct {
 	Reason string
 }
 
-func (e Error) Error() string {
+func (e ParseError) Error() string {
 	return fmt.Sprintf("line %d: %s", e.Line, e.defaultMessage())
 }
 
-func (e Error) defaultMessage() string {
+func (e ParseError) defaultMessage() string {
 	switch e.Code {
 	case ErrUnmatchedOpenTag:
 		return "unmatched open tag"
@@ -50,16 +50,16 @@ func (e Error) defaultMessage() string {
 	}
 }
 
-func newError(line int, code ErrorCode) Error {
-	return Error{
+func newError(line int, code ErrorCode) ParseError {
+	return ParseError{
 		Line:   line,
 		Code:   code,
 		Reason: "",
 	}
 }
 
-func newErrorWithReason(line int, code ErrorCode, reason string) Error {
-	return Error{
+func newErrorWithReason(line int, code ErrorCode, reason string) ParseError {
+	return ParseError{
 		Line:   line,
 		Code:   code,
 		Reason: reason,
