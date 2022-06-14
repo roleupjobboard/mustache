@@ -52,9 +52,8 @@ func (e ParseError) defaultMessage() string {
 
 func newError(line int, code ErrorCode) ParseError {
 	return ParseError{
-		Line:   line,
-		Code:   code,
-		Reason: "",
+		Line: line,
+		Code: code,
 	}
 }
 
