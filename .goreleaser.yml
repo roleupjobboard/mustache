@@ -1,8 +1,6 @@
 env:
   - GO111MODULE=on
   - CGO_ENABLED=0
-  - GOFLAGS=-mod=vendor
-  - GOPROXY=off
 builds:
   - main: ./cmd/mustache
     binary: mustache
@@ -12,3 +10,4 @@ builds:
       - linux
     goarch:
       - amd64
+      - arm64
